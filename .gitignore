@@ -4,3 +4,4 @@ npm-debug.log
 quiz.sqlite
 urls.txt
 .env
+commands_to_generate_keys.txt
