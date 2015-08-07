@@ -41,6 +41,16 @@ app.use(function(req, res, next){
   next();
 });
 
+// MW para controlar la expiración de la sesión
+app.use(function(req, res, next){
+
+  // comprobamos el tiempo de expiración si hay sesión
+  if(req.session.user && req.session.cookie.maxAge > 0){
+    req.session.touch();
+  }
+  next();
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler

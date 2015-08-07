@@ -32,6 +32,9 @@ exports.create = function(req, res){
     // La sesión se define por la existencia de: req.session.user
     req.session.user = { id:user.id, username: user.username };
 
+    // Fijamos el tiempo de expiración en 2 minutos en ms
+    req.session.cookie.expires = new Date(Date.now() + 120000);
+
     res.redirect(req.session.redir.toString()); // redirección a path anterior a login
   });
 };
